@@ -1,0 +1,128 @@
+name: pangolin
+networks:
+  default:
+    driver: bridge
+    name: pangolin
+secrets:
+  cloudflare_api_token:
+    file: ${SECRETSDIR}/cf_fn-cloud_api-certs.secret
+services:
+  crowdsec:
+    command: -t
+    container_name: crowdsec
+    user: ${PUID:-0}:${PGID:-0}
+    environment:
+      COLLECTIONS: crowdsecurity/traefik crowdsecurity/appsec-virtual-patching crowdsecurity/appsec-generic-rules crowdsecurity/linux crowdsecurity/iptables
+      ENROLL_INSTANCE_NAME: pangolin-crowdsec
+      ENROLL_TAGS: docker
+      GID: "1000"
+      PARSERS: crowdsecurity/whitelists
+    healthcheck:
+      interval: 10s
+      retries: 3
+      start_period: 30s
+      test:
+        - CMD
+        - cscli
+        - lapi
+        - status
+      timeout: 5s
+    image: docker.io/crowdsecurity/crowdsec:latest
+    labels:
+      - traefik.enable=false
+    ports:
+      - 6060:6060
+      - 8080:8080
+    restart: unless-stopped
+    volumes:
+      - ./config/crowdsec:/etc/crowdsec
+      - ./config/crowdsec/db:/var/lib/crowdsec/data
+      - ./config/traefik/logs:/var/log/traefik
+      - /var/log/journal:/var/log/host:ro
+  gerbil:
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    command:
+      - --reachableAt=http://gerbil:3004
+      - --generateAndSaveKeyTo=/var/config/key
+      - --remoteConfig=http://pangolin:3001/api/v1/
+    container_name: gerbil
+    user: ${PUID:-0}:${PGID:-0}
+    depends_on:
+      pangolin:
+        condition: service_healthy
+    image: docker.io/fosrl/gerbil:1.3.0
+    ports:
+      - 51820:51820/udp
+      - 21820:21820/udp
+      - 443:443
+      - 80:80
+    restart: unless-stopped
+    volumes:
+      - ./config/:/var/config
+  pangolin:
+    container_name: pangolin
+    user: ${PUID:-0}:${PGID:-0}
+    healthcheck:
+      interval: 10s
+      retries: 15
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:3001/api/v1/
+      timeout: 10s
+    image: docker.io/fosrl/pangolin:1.15.4
+    restart: unless-stopped
+    volumes:
+      - ./config:/app/config
+  traefik:
+    command:
+      - --configFile=/etc/traefik/traefik_config.yml
+    container_name: traefik
+    user: ${PUID:-0}:${PGID:-0}
+    depends_on:
+      crowdsec:
+        condition: service_healthy
+      pangolin:
+        condition: service_healthy
+    image: docker.io/traefik:v3.6
+    network_mode: service:gerbil
+    restart: unless-stopped
+    volumes:
+      - ./config/traefik:/etc/traefik:ro
+      - ./config/letsencrypt:/letsencrypt
+      - ./config/traefik/logs:/var/log/traefik
+      - ./config/traefik/rules:/rules
+    secrets:
+      - cloudflare_api_token
+    environment:
+      - CF_DNS_API_TOKEN_FILE=/run/secrets/cloudflare_api_token
+  middleware-manager:
+    image: hhftechnology/middleware-manager:latest
+    container_name: middleware-manager
+    user: ${PUID:-0}:${PGID:-0}
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+      - ./config/traefik:/etc/traefik
+      - ./config/traefik/rules:/conf
+      - ./config/middleware-manager:/app/config
+      #- ./config/middleware-manager/templates.yaml:/app/config/templates.yaml  # Optional custom templates
+    environment:
+      - ACTIVE_DATA_SOURCE=pangolin
+      - PANGOLIN_API_URL=http://pangolin:3001/api/v1
+      - TRAEFIK_STATIC_CONFIG_PATH=/etc/traefik/traefik_config.yml # Don't change this
+      - TRAEFIK_CONF_DIR=/conf
+      - DB_PATH=/data/middleware.db
+      - PORT=3456
+    ports:
+    - "3456:3456"
+    depends_on:
+      pangolin:
+        condition: service_healthy
+      traefik:
+        condition: service_started
+      
+
