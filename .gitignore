@@ -15,8 +15,13 @@ config/crowdsec/contexts/
 config/crowdsec/parsers/
 config/crowdsec/patterns/
 config/crowdsec/scenarios/
+config/traefik-plugins/sources/
 *.bak.*
 *.tar.gz
+*.tar
+*.zip
 *.backup
+*.bak
 *.mdb
 *.mmdb
+*state.json

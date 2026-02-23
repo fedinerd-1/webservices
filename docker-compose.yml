@@ -48,7 +48,7 @@ services:
       - --generateAndSaveKeyTo=/var/config/key
       - --remoteConfig=http://pangolin:3001/api/v1/
     container_name: gerbil
-    user: ${PUID:-0}:${PGID:-0}
+    # user: ${PUID:-0}:${PGID:-0}
     depends_on:
       pangolin:
         condition: service_healthy
@@ -95,6 +95,7 @@ services:
       - ./config/letsencrypt:/letsencrypt
       - ./config/traefik/logs:/var/log/traefik
       - ./config/traefik/rules:/rules
+      - ./config/traefik-plugins:/plugins-storage
     secrets:
       - cloudflare_api_token
     environment:
