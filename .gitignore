@@ -16,6 +16,7 @@ config/crowdsec/parsers/
 config/crowdsec/patterns/
 config/crowdsec/scenarios/
 config/traefik-plugins/sources/
+config/letsencrypt/*
 *.bak.*
 *.tar.gz
 *.tar
