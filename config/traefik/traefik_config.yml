@@ -78,6 +78,7 @@ log:
   compress: true
   format: json
   level: INFO
+  filePath: /var/log/traefik/traefik.log
   maxAge: 3
   maxBackups: 3
   maxSize: 100

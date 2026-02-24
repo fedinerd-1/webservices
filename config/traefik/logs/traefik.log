@@ -1,0 +1,69 @@
+{"level":"warn","time":"2026-02-24T01:31:29Z","message":"Traefik can reject some encoded characters in the request path.When your backend is not fully compliant with [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986),it is recommended to set these options to `false` to avoid split-view situation.Refer to the documentation for more details: https://doc.traefik.io/traefik/v3.6/migrate/v3/#encoded-characters-configuration-default-values"}
+{"level":"warn","time":"2026-02-24T01:31:29Z","message":"delayBeforeCheck is now deprecated, please use propagation.delayBeforeChecks instead."}
+{"level":"info","version":"3.6.8","time":"2026-02-24T01:31:29Z","message":"Traefik version 3.6.8 built on 2026-02-11T16:35:39Z"}
+{"level":"info","time":"2026-02-24T01:31:29Z","message":"Version check is enabled."}
+{"level":"info","time":"2026-02-24T01:31:29Z","message":"Traefik checks for new releases to notify you if your version is out of date."}
+{"level":"info","time":"2026-02-24T01:31:29Z","message":"It also collects usage data during this process."}
+{"level":"info","time":"2026-02-24T01:31:29Z","message":"Check the documentation to get more info: https://doc.traefik.io/traefik/contributing/data-collection/"}
+{"level":"info","time":"2026-02-24T01:31:29Z","message":"\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"}
+{"level":"info","plugins":["badger","crowdsec"],"time":"2026-02-24T01:31:29Z","message":"Loading plugins..."}
+{"level":"info","plugins":["badger","crowdsec"],"time":"2026-02-24T01:31:30Z","message":"Plugins loaded."}
+{"level":"info","time":"2026-02-24T01:31:30Z","message":"Starting provider aggregator *aggregator.ProviderAggregator"}
+{"level":"info","time":"2026-02-24T01:31:30Z","message":"Starting provider *file.Provider"}
+{"level":"info","time":"2026-02-24T01:31:30Z","message":"Starting provider *traefik.Provider"}
+{"level":"info","time":"2026-02-24T01:31:30Z","message":"Starting provider *acme.Provider"}
+{"level":"info","providerName":"letsencrypt.acme","acmeCA":"https://acme-v02.api.letsencrypt.org/directory","time":"2026-02-24T01:31:30Z","message":"Testing certificate renew..."}
+{"level":"info","time":"2026-02-24T01:31:30Z","message":"Starting provider *http.Provider"}
+{"level":"info","time":"2026-02-24T01:31:30Z","message":"Starting provider *acme.ChallengeTLSALPN"}
+{"level":"warn","time":"2026-02-24T01:41:34Z","message":"A new release of Traefik has been found: 3.6.9. Please consider updating."}
+{"level":"info","time":"2026-02-24T01:58:46Z","message":"I have to go..."}
+{"level":"info","time":"2026-02-24T01:58:46Z","message":"Stopping server gracefully"}
+{"level":"error","providerName":"http","error":"cannot fetch configuration data: do fetch request: Get \"http://middleware-manager:3456/api/v1/traefik-config\": dial tcp: lookup middleware-manager on 127.0.0.11:53: no such host","time":"2026-02-24T01:58:50Z","message":"Provider error, retrying in 736.73155ms"}
+{"level":"error","providerName":"http","error":"cannot fetch configuration data: do fetch request: Get \"http://middleware-manager:3456/api/v1/traefik-config\": dial tcp: lookup middleware-manager on 127.0.0.11:53: no such host","time":"2026-02-24T01:58:51Z","message":"Provider error, retrying in 502.134465ms"}
+{"level":"error","providerName":"http","error":"cannot fetch configuration data: do fetch request: Get \"http://middleware-manager:3456/api/v1/traefik-config\": dial tcp: lookup middleware-manager on 127.0.0.11:53: no such host","time":"2026-02-24T01:58:51Z","message":"Provider error, retrying in 1.099825495s"}
+{"level":"error","providerName":"http","error":"cannot fetch configuration data: do fetch request: Get \"http://middleware-manager:3456/api/v1/traefik-config\": dial tcp: lookup middleware-manager on 127.0.0.11:53: no such host","time":"2026-02-24T01:58:52Z","message":"Provider error, retrying in 2.400643704s"}
+{"level":"error","providerName":"http","error":"cannot fetch configuration data: do fetch request: Get \"http://middleware-manager:3456/api/v1/traefik-config\": dial tcp: lookup middleware-manager on 127.0.0.11:53: no such host","time":"2026-02-24T01:58:55Z","message":"Provider error, retrying in 1.333366551s"}
+{"level":"error","providerName":"http","error":"cannot fetch configuration data: do fetch request: Get \"http://middleware-manager:3456/api/v1/traefik-config\": dial tcp: lookup middleware-manager on 127.0.0.11:53: no such host","time":"2026-02-24T01:58:56Z","message":"Provider error, retrying in 2.010630888s"}
+{"level":"info","time":"2026-02-24T01:58:56Z","message":"Server stopped"}
+{"level":"info","time":"2026-02-24T01:58:56Z","message":"Shutting down"}
+{"level":"error","providerName":"http","error":"context canceled","time":"2026-02-24T01:58:56Z","message":"Cannot retrieve data"}
+{"level":"warn","time":"2026-02-24T02:00:14Z","message":"Traefik can reject some encoded characters in the request path.When your backend is not fully compliant with [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986),it is recommended to set these options to `false` to avoid split-view situation.Refer to the documentation for more details: https://doc.traefik.io/traefik/v3.6/migrate/v3/#encoded-characters-configuration-default-values"}
+{"level":"warn","time":"2026-02-24T02:00:14Z","message":"delayBeforeCheck is now deprecated, please use propagation.delayBeforeChecks instead."}
+{"level":"info","version":"3.6.8","time":"2026-02-24T02:00:14Z","message":"Traefik version 3.6.8 built on 2026-02-11T16:35:39Z"}
+{"level":"info","time":"2026-02-24T02:00:14Z","message":"Version check is enabled."}
+{"level":"info","time":"2026-02-24T02:00:14Z","message":"Traefik checks for new releases to notify you if your version is out of date."}
+{"level":"info","time":"2026-02-24T02:00:14Z","message":"It also collects usage data during this process."}
+{"level":"info","time":"2026-02-24T02:00:14Z","message":"Check the documentation to get more info: https://doc.traefik.io/traefik/contributing/data-collection/"}
+{"level":"info","time":"2026-02-24T02:00:14Z","message":"\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"}
+{"level":"info","plugins":["badger","crowdsec"],"time":"2026-02-24T02:00:14Z","message":"Loading plugins..."}
+{"level":"info","plugins":["badger","crowdsec"],"time":"2026-02-24T02:00:15Z","message":"Plugins loaded."}
+{"level":"info","time":"2026-02-24T02:00:15Z","message":"Starting provider aggregator *aggregator.ProviderAggregator"}
+{"level":"info","time":"2026-02-24T02:00:15Z","message":"Starting provider *file.Provider"}
+{"level":"info","time":"2026-02-24T02:00:15Z","message":"Starting provider *traefik.Provider"}
+{"level":"info","time":"2026-02-24T02:00:15Z","message":"Starting provider *http.Provider"}
+{"level":"info","time":"2026-02-24T02:00:15Z","message":"Starting provider *acme.Provider"}
+{"level":"info","providerName":"letsencrypt.acme","acmeCA":"https://acme-v02.api.letsencrypt.org/directory","time":"2026-02-24T02:00:15Z","message":"Testing certificate renew..."}
+{"level":"info","time":"2026-02-24T02:00:15Z","message":"Starting provider *acme.ChallengeTLSALPN"}
+{"level":"info","time":"2026-02-24T02:02:23Z","message":"I have to go..."}
+{"level":"info","time":"2026-02-24T02:02:23Z","message":"Stopping server gracefully"}
+{"level":"info","time":"2026-02-24T02:02:23Z","message":"Server stopped"}
+{"level":"info","time":"2026-02-24T02:02:23Z","message":"Shutting down"}
+{"level":"warn","time":"2026-02-24T02:04:35Z","message":"Traefik can reject some encoded characters in the request path.When your backend is not fully compliant with [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986),it is recommended to set these options to `false` to avoid split-view situation.Refer to the documentation for more details: https://doc.traefik.io/traefik/v3.6/migrate/v3/#encoded-characters-configuration-default-values"}
+{"level":"warn","time":"2026-02-24T02:04:35Z","message":"delayBeforeCheck is now deprecated, please use propagation.delayBeforeChecks instead."}
+{"level":"info","version":"3.6.8","time":"2026-02-24T02:04:35Z","message":"Traefik version 3.6.8 built on 2026-02-11T16:35:39Z"}
+{"level":"info","time":"2026-02-24T02:04:35Z","message":"Version check is enabled."}
+{"level":"info","time":"2026-02-24T02:04:35Z","message":"Traefik checks for new releases to notify you if your version is out of date."}
+{"level":"info","time":"2026-02-24T02:04:35Z","message":"It also collects usage data during this process."}
+{"level":"info","time":"2026-02-24T02:04:35Z","message":"Check the documentation to get more info: https://doc.traefik.io/traefik/contributing/data-collection/"}
+{"level":"info","time":"2026-02-24T02:04:35Z","message":"\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://doc.traefik.io/traefik/contributing/data-collection/\n"}
+{"level":"info","plugins":["badger","crowdsec"],"time":"2026-02-24T02:04:35Z","message":"Loading plugins..."}
+{"level":"info","plugins":["badger","crowdsec"],"time":"2026-02-24T02:04:35Z","message":"Plugins loaded."}
+{"level":"info","time":"2026-02-24T02:04:35Z","message":"Starting provider aggregator *aggregator.ProviderAggregator"}
+{"level":"info","time":"2026-02-24T02:04:35Z","message":"Starting provider *file.Provider"}
+{"level":"info","time":"2026-02-24T02:04:35Z","message":"Starting provider *traefik.Provider"}
+{"level":"info","time":"2026-02-24T02:04:35Z","message":"Starting provider *http.Provider"}
+{"level":"info","time":"2026-02-24T02:04:35Z","message":"Starting provider *acme.ChallengeTLSALPN"}
+{"level":"info","time":"2026-02-24T02:04:35Z","message":"Starting provider *acme.Provider"}
+{"level":"info","providerName":"letsencrypt.acme","acmeCA":"https://acme-v02.api.letsencrypt.org/directory","time":"2026-02-24T02:04:35Z","message":"Testing certificate renew..."}
+{"level":"error","providerName":"http","error":"cannot fetch configuration data: do fetch request: Get \"http://middleware-manager:3456/api/v1/traefik-config\": dial tcp 172.18.0.6:3456: connect: connection refused","time":"2026-02-24T02:04:35Z","message":"Provider error, retrying in 339.732677ms"}
+{"level":"warn","time":"2026-02-24T02:14:38Z","message":"A new release of Traefik has been found: 3.6.9. Please consider updating."}
