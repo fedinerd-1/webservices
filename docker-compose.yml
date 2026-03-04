@@ -58,6 +58,7 @@ services:
       - 21820:21820/udp
       - 443:443
       - 80:80
+      - 22:22
     restart: unless-stopped
     volumes:
       - ./config/:/var/config
@@ -73,10 +74,11 @@ services:
         - -f
         - http://localhost:3001/api/v1/
       timeout: 10s
-    image: docker.io/fosrl/pangolin:1.15.4
+    image: docker.io/fosrl/pangolin:1.16.2
     restart: unless-stopped
     volumes:
       - ./config:/app/config
+      - ./config/cache:/app/.next/cache:rw
   traefik:
     command:
       - --configFile=/etc/traefik/traefik_config.yml

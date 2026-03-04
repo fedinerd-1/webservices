@@ -5,6 +5,7 @@ config/key
 config/crowdsec/db/
 config/crowdsec/hub/
 config/db/db.sqlite
+config/db/backups/*.sqlite
 config/traefik/logs/access.log
 config/traefik/logs/traefik.log
 config/crowdsec/local_api_credentials.yaml
