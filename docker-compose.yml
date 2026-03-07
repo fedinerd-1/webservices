@@ -58,7 +58,6 @@ services:
       - 21820:21820/udp
       - 443:443
       - 80:80
-      - 2224:2224
     restart: unless-stopped
     volumes:
       - ./config/:/var/config
@@ -89,7 +88,7 @@ services:
         condition: service_healthy
       pangolin:
         condition: service_healthy
-    image: docker.io/traefik:v3.6
+    image: docker.io/traefik:3.6.10
     network_mode: service:gerbil
     restart: unless-stopped
     volumes:
@@ -125,7 +124,7 @@ services:
     depends_on:
       pangolin:
         condition: service_healthy
-      gerbil:
+      traefik:
         condition: service_started
   # Traefik Log Dashboard Agent
   traefik-agent:
