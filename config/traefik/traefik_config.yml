@@ -66,6 +66,12 @@ entryPoints:
     transport:
       respondingTimeouts:
         readTimeout: 30m
+  # Forgejo SSH Access
+  tcp-2222:
+    address: :2222/tcp
+    transport:  
+      respondingTimeouts:
+        readTimeout: 30m
 experimental:
   plugins:
     badger:
