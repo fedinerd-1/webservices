@@ -71,7 +71,7 @@ entryPoints:
     address: :2222/tcp
     transport:  
       respondingTimeouts:
-        readTimeout: 30m
+        readTimeout: 30m            
 experimental:
   plugins:
     badger:
