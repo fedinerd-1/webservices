@@ -1,0 +1,44 @@
+http:
+  middlewares:
+    crowdsec-no-appsec:
+      plugin:
+        crowdsec:
+          enabled: true
+          crowdsecMode: live
+          logLevel: INFO
+
+          # 🚫 Disable AppSec WAF for Docker Registry
+          crowdsecAppsecEnabled: false
+
+          # ✅ Keep decision engine active
+          updateIntervalSeconds: 15
+          updateMaxFailure: 0
+          defaultDecisionSeconds: 15
+          httpTimeoutSeconds: 10
+
+          # LAPI connection (reuse existing bouncer key)
+          crowdsecLapiHost: crowdsec:8080
+          crowdsecLapiScheme: http
+          crowdsecLapiKey: zXqb7tgDIUwOLFtW1YRzdCI8IH2GX2Tsh6rv5eZcqkg
+
+          forwardedHeadersTrustedIPs:
+            - "0.0.0.0/0"
+
+          clientTrustedIPs:
+            - "10.0.0.0/8"
+            - "172.16.0.0/12"
+            - "192.168.0.0/16"
+            - "100.90.128.0/24"
+
+  routers:
+    forgejo-registry:
+      entryPoints:
+        - websecure
+      rule: Host(`forgejo.fedinerds.net`) && PathPrefix(`/v2/`)
+      priority: 1000
+      middlewares:
+        - crowdsec-no-appsec@file
+        - security-headers@file
+      service: 8-Forgejo-service
+      tls:
+        certResolver: letsencrypt

@@ -59,8 +59,8 @@ entryPoints:
       encodedCharacters:
         allowEncodedQuestionMark: true
         allowEncodedSlash: true
-      # middlewares:
-      #   - crowdsec@file
+      middlewares:
+        - crowdsec@file
       tls:
         certResolver: letsencrypt
     transport:
@@ -77,9 +77,9 @@ experimental:
     badger:
       moduleName: github.com/fosrl/badger
       version: v1.3.1
-    # crowdsec:
-    #   moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
-    #   version: v1.4.4
+    crowdsec:
+      moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
+      version: v1.4.4
 log:
   compress: true
   format: json
