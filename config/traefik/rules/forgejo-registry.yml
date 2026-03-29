@@ -30,6 +30,12 @@ http:
             - "192.168.0.0/16"
             - "100.90.128.0/24"
 
+  services:
+    forgejo-registry:
+      loadBalancer:
+        servers:
+          - url: "http://100.89.128.8:54064"
+
   routers:
     forgejo-registry:
       entryPoints:
@@ -39,6 +45,8 @@ http:
       middlewares:
         - crowdsec-no-appsec@file
         - security-headers@file
-      service: 8-Forgejo-service
+      service: forgejo-registry@file
       tls:
         certResolver: letsencrypt
+
+  
