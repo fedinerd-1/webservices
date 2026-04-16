@@ -12,7 +12,7 @@ services:
     container_name: crowdsec
     user: ${PUID:-0}:${PGID:-0}
     environment:
-      COLLECTIONS: crowdsecurity/traefik crowdsecurity/appsec-virtual-patching crowdsecurity/appsec-generic-rules crowdsecurity/linux crowdsecurity/iptables
+      COLLECTIONS: crowdsecurity/traefik crowdsecurity/appsec-virtual-patching crowdsecurity/appsec-generic-rules
       ENROLL_INSTANCE_NAME: pangolin-crowdsec
       ENROLL_TAGS: docker
       GID: "1000"
